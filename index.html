@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Irvagolius</title>
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container navbar">
+      <h1 class="logo">Portofolio</h1>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2 class="typing-huruf" id="typing-container"></h2>
+      <p data-aos="fade-up" data-aos-delay="300">Frontend Developer | UI Designer</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 data-aos="fade-down">Tentang Saya</h2>
+      <div class="about-content" data-aos="fade-right">
+        <div class="profile-wrapper" data-aos="zoom-in">
+          <img src="image/profile.jpg.jpeg" alt="Foto Profil" />
+          <div class="image-bar"></div>
+        </div>
+        <p data-aos="fade-up" data-aos-delay="300">
+          Saya adalah Irvagolius Jesua A Hitipeuw atau biasa di panggil Kiki. Saya Lahir pada tanggal 15 Juni 2003. Saya suka bermain bola dan game FC Mobile. Saya Mahasiswa akt.24 dari PRODI INFORMATIKA, UNIVERSITAS KRISTEN INDONESIA MALUKU
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + FOOTER -->
+  <div class="footer-wrapper">
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 data-aos="fade-up">Kontak</h2>
+        <div class="contact-item" data-aos="fade-left">
+          <i class="fas fa-envelope"></i>
+          <span>Email: <a href="mailto:kamu@email.com">irvagoliushitipeuw@gmail.com</a></span>
+        </div>
+        <div class="contact-item" data-aos="fade-left" data-aos-delay="200">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram: <a href="https://instagram.com/15irvja" target="_blank">@15irvjaS</a></span>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p data-aos="fade-up">© 2025 Irvagolius - Web Portfolio</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    const container = document.getElementById("typing-container");
+    const words = ["Halo,", "Saya", "Irvagolius", "Jesua", "Hitipeuw"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let currentWordSpan;
+
+    function typePerHuruf() {
+      if (wordIndex < words.length) {
+        if (!currentWordSpan) {
+          currentWordSpan = document.createElement("span");
+          currentWordSpan.classList.add("word-highlight");
+          container.appendChild(currentWordSpan);
+        }
+
+        if (charIndex < words[wordIndex].length) {
+          currentWordSpan.textContent += words[wordIndex][charIndex];
+          charIndex++;
+          setTimeout(typePerHuruf, 120);
+        } else {
+          container.appendChild(document.createTextNode(" "));
+          wordIndex++;
+          charIndex = 0;
+          currentWordSpan = null;
+          setTimeout(typePerHuruf, 250);
+        }
+      } else {
+        setTimeout(() => {
+          container.textContent = "";
+          wordIndex = 0;
+          charIndex = 0;
+          currentWordSpan = null;
+          setTimeout(typePerHuruf, 500);
+        }, 2500); // jeda sebelum ulang
+      }
+    }
+
+    typePerHuruf();
+  </script>
+
+</body>
+</html>
